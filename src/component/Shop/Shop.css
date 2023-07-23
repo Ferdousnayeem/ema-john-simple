@@ -13,3 +13,18 @@
 .cart-container{
     position: relative;
 }
+
+.proceed-link{
+    text-decoration: none;
+}
+
+.btn-proceed{
+    width: 100%;
+    background-color: #FF9900;
+    border-radius: 4px;
+    margin: 10px auto;
+    color: #FFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

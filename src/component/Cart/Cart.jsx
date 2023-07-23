@@ -1,9 +1,13 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import './Cart.css';
 
-const Cart = (props) => {
-    // console.log(props);
-    const cart = props.cart;
+const Cart = ({cart, handleClearCart, children}) => {
+
+    //const cart = props.cart; //option - 1
+    //const {cart} = props //option - 2
+
     // console.log(cart);
     
     let totalPrice = 0;
@@ -16,8 +20,8 @@ const Cart = (props) => {
 
         // or, product.quantity = product.quantity || 1; (if conditon in short)
 
-        totalPrice = totalPrice + product.price * quantity;
-        totalShipping = totalShipping + product.shipping * quantity;
+        totalPrice = totalPrice + product.price * product.quantity;
+        totalShipping = totalShipping + product.shipping * product.quantity;
         quantity = quantity + product.quantity;
     }
 
@@ -33,6 +37,11 @@ const Cart = (props) => {
             <p>Total Shipping Charge: {totalShipping}</p>
             <p>Tax: {tax.toFixed(2)}</p>
             <h6>Grand Total: $ {grandTotal.toFixed(2)}</h6>
+            <button onClick={handleClearCart} className='btn-clear-cart'>
+                <span>Clear Cart</span>
+                <FontAwesomeIcon className='clear-icon' icon={faTrashCan}/>
+            </button>
+            {children}
         </div>
     );
 };
